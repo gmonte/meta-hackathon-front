@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "name": "@midig/functions",
+  "version": "0.0.1",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@midig/c-demo": "^0.0.2"
+  }
+}
