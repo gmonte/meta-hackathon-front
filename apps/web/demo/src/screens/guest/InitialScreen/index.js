@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-import ComponentDemo from '@midig/c-demo'
+import DemoScreen from '@nanoteam/f-demo'
 
 import styles from './styles'
 
@@ -15,7 +15,7 @@ class InitialScreen extends Component {
     return (
       <div>
         <h2>Initial screen</h2>
-        <ComponentDemo
+        <DemoScreen
           history={ history }
           redirectTo="/other-page"
         />

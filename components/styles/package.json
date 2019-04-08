@@ -1,7 +1,7 @@
 {
   "private": true,
-  "name": "@midig/c-styles",
-  "version": "1.0.0",
+  "name": "@nanoteam/c-styles",
+  "version": "0.0.0",
   "main": "src/index.js",
   "license": "MIT",
   "publishConfig": {
@@ -9,7 +9,6 @@
   },
   "dependencies": {
     "@ctrl/tinycolor": "^2.4.0",
-    "@midig/c-demo": "^0.0.2",
     "jss": "^9.8.7",
     "jss-preset-default": "^4.5.0",
     "react-jss": "^8.6.1",

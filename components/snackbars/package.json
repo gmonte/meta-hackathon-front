@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "name": "@nanoteam/c-snackbars",
+  "version": "0.0.0",
+  "main": "src/index.js",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@nanoteam/c-buttons": "^0.0.0",
+    "@nanoteam/c-icons": "^0.0.0",
+    "notistack": "^0.5.1",
+    "react-copy-to-clipboard": "^5.0.1"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "name": "@nanoteam/c-buttons",
+  "version": "0.0.0",
+  "main": "src/index.js",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@nanoteam/c-icons": "^0.0.0",
+    "@nanoteam/c-popovers": "^0.0.0",
+    "react-outside-click-handler": "^1.2.2"
+  }
+}

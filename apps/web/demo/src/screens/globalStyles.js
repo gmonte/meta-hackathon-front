@@ -1,5 +1,5 @@
-import Fonts from '@midig/c-styles/src/styles/Fonts'
-import Colors from '@midig/c-styles/src/styles/Colors'
+import Fonts from '@nanoteam/c-styles/src/styles/Fonts'
+import Colors from '@nanoteam/c-styles/src/styles/Colors'
 
 export default () => ({
   '@global': {

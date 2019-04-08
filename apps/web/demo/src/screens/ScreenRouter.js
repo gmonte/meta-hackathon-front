@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 import flow from 'lodash/fp/flow'
 import { HashRouter as Router } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
-import { withJssThemeProvider } from '@midig/c-styles'
-import supportsHistory from '@midig/functions/src/supportsHistory'
+import { withJssThemeProvider } from '@nanoteam/c-styles'
+import withSnackbars from '@nanoteam/c-snackbars/src/actions/withSnackbars'
+import supportsHistory from '@nanoteam/functions/src/supportsHistory'
 import GuestScreenRouter from './guest/GuestScreenRouter'
 
 import globalStyles from './globalStyles'
@@ -30,6 +31,7 @@ ScreenRouter.propTypes = {
 }
 
 export default flow(
+  withSnackbars(),
   withJssThemeProvider(),
   withStyles(globalStyles)
 )(ScreenRouter)

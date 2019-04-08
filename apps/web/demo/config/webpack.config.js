@@ -62,7 +62,7 @@ module.exports = (env, argv) => ({
       },
       {
         test: /\.jsx?$/,
-        exclude: /node_modules\/(?!@midig)/,
+        exclude: /node_modules\/(?!@nanoteam)/,
         use: {
           loader: require.resolve('babel-loader'),
           options: {

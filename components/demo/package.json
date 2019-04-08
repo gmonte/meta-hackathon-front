@@ -1,9 +1,0 @@
-{
-  "private": true,
-  "name": "@midig/c-demo",
-  "version": "0.0.2",
-  "main": "src/index.js",
-  "publishConfig": {
-    "access": "public"
-  }
-}

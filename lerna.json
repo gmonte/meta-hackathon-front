@@ -2,6 +2,8 @@
   "packages": [
     "apps/*/*",
     "components/*",
+    "features/*",
+    "services/*",
     "functions"
   ],
   "npmClient": "yarn",

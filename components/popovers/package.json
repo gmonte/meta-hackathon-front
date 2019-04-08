@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "name": "@nanoteam/c-popovers",
+  "version": "0.0.0",
+  "main": "src/index.js",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}
