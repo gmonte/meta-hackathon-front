@@ -1,5 +1,5 @@
 import React from 'react'
-import CancelIcon from '@nanoteam/c-icons/src/CancelIcon'
+import CancelIcon from '@jqcode/c-icons/src/CancelIcon'
 import IconButton from '../IconButton'
 
 

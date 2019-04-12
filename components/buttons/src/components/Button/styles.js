@@ -1,5 +1,5 @@
-import Fonts from '@nanoteam/c-styles/src/styles/Fonts'
-import Colors from '@nanoteam/c-styles/src/styles/Colors'
+import Fonts from '@jqcode/c-styles/src/styles/Fonts'
+import Colors from '@jqcode/c-styles/src/styles/Colors'
 
 export default theme => ({
   btn: {

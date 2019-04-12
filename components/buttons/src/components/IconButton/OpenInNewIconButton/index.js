@@ -1,5 +1,5 @@
 import React from 'react'
-import OpenInNewIcon from '@nanoteam/c-icons/src/OpenInNewIcon'
+import OpenInNewIcon from '@jqcode/c-icons/src/OpenInNewIcon'
 import PropTypes from 'prop-types'
 import IconButton from '../IconButton'
 

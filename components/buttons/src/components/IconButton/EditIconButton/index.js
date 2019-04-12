@@ -1,5 +1,5 @@
 import React from 'react'
-import EditIcon from '@nanoteam/c-icons/src/EditIcon'
+import EditIcon from '@jqcode/c-icons/src/EditIcon'
 import IconButton from '../IconButton'
 
 const EditIconButton = props => (

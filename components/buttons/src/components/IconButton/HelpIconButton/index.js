@@ -1,5 +1,5 @@
 import React from 'react'
-import HelpIcon from '@nanoteam/c-icons/src/HelpIcon'
+import HelpIcon from '@jqcode/c-icons/src/HelpIcon'
 import IconButton from '../IconButton'
 
 const HelpIconButton = props => (

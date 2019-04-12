@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@nanoteam/app-desktop-electron-demo",
+  "name": "@jqcode/app-desktop-electron-demo",
   "description": "An Electron application demo",
   "homepage": "https://github.com/gmonte/meta-hackathon-front",
   "author": {
@@ -11,9 +11,9 @@
   "main": "main.js",
   "license": "MIT",
   "build": {
-    "appId": "com.nanoteam.electron-demo",
+    "appId": "com.jqcode.electron-demo",
     "productName": "electron demo",
-    "copyright": "Nanoteam",
+    "copyright": "jqcode",
     "directories": {
       "buildResources": "build",
       "output": "releases"
@@ -72,7 +72,7 @@
   },
   "dependencies": {
     "electron-log": "^2.2.17",
-    "@nanoteam/app-web-demo": "^0.0.0",
+    "@jqcode/app-web-demo": "^0.0.0",
     "source-map-support": "^0.5.9",
     "utf8": "^3.0.0",
     "kill-port": "^1.3.2",
@@ -84,14 +84,14 @@
     "bootstrap": "cd ../../../ && yarn bootstrap",
     "bundle": "webpack --config config/webpack.config.js --mode production",
     "bundle:dev": "webpack --config config/webpack.config.js --mode development -w --info false --quiet",
-    "clean": "rm -rf ./releases && mkdir releases && cd releases && mkdir @nanoteam",
+    "clean": "rm -rf ./releases && mkdir releases && cd releases && mkdir @jqcode",
     "electron-builder-app:mac": "yarn clean && electron-builder -m",
     "electron-builder-app:linux": "yarn clean && electron-builder -l",
     "electron-builder-app:win": "yarn clean && electron-builder -w",
     "electron-main": "webpack --config config/webpack.electron.main.config.js --mode production",
     "electron-main:dev": "webpack --config config/webpack.electron.main.config.js --mode development -w --info false --quiet",
-    "logs:mac": "webstorm ~/Library/Logs/@nanoteam/electron-demo/log.log",
-    "logs:linux": "code ~/.config/@nanoteam/electron-demo/log.log",
+    "logs:mac": "webstorm ~/Library/Logs/@jqcode/electron-demo/log.log",
+    "logs:linux": "code ~/.config/@jqcode/electron-demo/log.log",
     "postinstall": "electron-builder install-app-deps",
     "serve": "ELECTRON_ENV=development electron .",
     "start": "npm-run-all --parallel electron-main:dev bundle:dev",

@@ -1,5 +1,5 @@
 import React from 'react'
-import ListIcon from '@nanoteam/c-icons/src/ListIcon'
+import ListIcon from '@jqcode/c-icons/src/ListIcon'
 import IconButton from '../IconButton'
 
 const ListIconButton = props => (

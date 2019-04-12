@@ -1,5 +1,5 @@
 import React from 'react'
-import FileDownloadIcon from '@nanoteam/c-icons/src/FileDownloadIcon'
+import FileDownloadIcon from '@jqcode/c-icons/src/FileDownloadIcon'
 import IconButton from '../IconButton'
 
 const FileDownloadIconButton = props => (

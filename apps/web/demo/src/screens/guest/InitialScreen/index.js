@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-import DemoScreen from '@nanoteam/f-demo'
+import DemoScreen from '@jqcode/f-demo'
 
 import styles from './styles'
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import ExpandInDatagridIcon from '@nanoteam/c-icons/src/ExpandInDatagridIcon'
+import ExpandInDatagridIcon from '@jqcode/c-icons/src/ExpandInDatagridIcon'
 import IconButton from '../IconButton'
 
 const ExpandInDatagridIconButton = props => (

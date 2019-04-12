@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@nanoteam/functions",
+  "name": "@jqcode/functions",
   "version": "0.0.0",
   "license": "MIT",
   "publishConfig": {

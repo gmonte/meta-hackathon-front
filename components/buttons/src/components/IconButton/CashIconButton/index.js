@@ -1,5 +1,5 @@
 import React from 'react'
-import CashIcon from '@nanoteam/c-icons/src/CashIcon'
+import CashIcon from '@jqcode/c-icons/src/CashIcon'
 import IconButton from '../IconButton'
 
 const CashIconButton = props => (

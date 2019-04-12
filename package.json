@@ -3,7 +3,7 @@
   "node": "10.15.3",
   "repository": "github.com/gmonte/meta-hackathon-front.git",
   "author": "Guilherme Monte <gmonte@inf.ufsm.br>",
-  "description": "The lerna monorepo by NanoTeam",
+  "description": "The lerna monorepo by jqcode",
   "license": "MIT",
   "publishConfig": {
     "access": "public"

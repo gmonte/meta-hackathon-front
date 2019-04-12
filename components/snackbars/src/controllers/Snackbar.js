@@ -1,8 +1,8 @@
 /* eslint-disable no-underscore-dangle */
 import React from 'react'
 import CopyToClipboard from 'react-copy-to-clipboard'
-import CopyIconButton from '@nanoteam/c-buttons/src/components/IconButton/CopyIconButton'
-import CloseIconButton from '@nanoteam/c-buttons/src/components/IconButton/CloseIconButton'
+import CopyIconButton from '@jqcode/c-buttons/src/components/IconButton/CopyIconButton'
+import CloseIconButton from '@jqcode/c-buttons/src/components/IconButton/CloseIconButton'
 import SnackbarActionsContainer from '../components/SnackbarActionsContainer'
 
 class Snackbar {

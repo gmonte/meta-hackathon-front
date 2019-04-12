@@ -1,5 +1,5 @@
 import React from 'react'
-import CloseIcon from '@nanoteam/c-icons/src/CloseIcon'
+import CloseIcon from '@jqcode/c-icons/src/CloseIcon'
 import IconButton from '../IconButton'
 
 const CloseIconButton = props => (

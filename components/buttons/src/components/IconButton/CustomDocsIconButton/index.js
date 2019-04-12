@@ -1,5 +1,5 @@
 import React from 'react'
-import CustomDocsIcon from '@nanoteam/c-icons/src/CustomDocsIcon'
+import CustomDocsIcon from '@jqcode/c-icons/src/CustomDocsIcon'
 import IconButton from '../IconButton'
 
 const CustomDocsIconButton = props => (

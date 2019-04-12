@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ActiveIcon from '@nanoteam/c-icons/src/ActiveIcon'
+import ActiveIcon from '@jqcode/c-icons/src/ActiveIcon'
 import IconButton from '../IconButton'
 
 const ActiveIconButton = props => (

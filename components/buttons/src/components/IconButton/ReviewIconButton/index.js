@@ -1,5 +1,5 @@
 import React from 'react'
-import CheckCircleIcon from '@nanoteam/c-icons/src/CheckCircleIcon'
+import CheckCircleIcon from '@jqcode/c-icons/src/CheckCircleIcon'
 import IconButton from '../IconButton'
 
 const ReviewIconButton = props => (

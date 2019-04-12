@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import RefreshIcon from '@nanoteam/c-icons/src/RefreshIcon'
+import RefreshIcon from '@jqcode/c-icons/src/RefreshIcon'
 import IconButton from '../IconButton'
 
 const RefreshIconButton = ({ iconProps, ...props }) => (

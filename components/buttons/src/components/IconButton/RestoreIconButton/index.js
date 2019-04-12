@@ -1,5 +1,5 @@
 import React from 'react'
-import RestoreIcon from '@nanoteam/c-icons/src/RestoreIcon'
+import RestoreIcon from '@jqcode/c-icons/src/RestoreIcon'
 import IconButton from '../IconButton'
 
 const RestoreIconButton = props => (

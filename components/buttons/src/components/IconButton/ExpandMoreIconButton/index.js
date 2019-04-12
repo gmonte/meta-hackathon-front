@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import ExpandMoreIcon from '@nanoteam/c-icons/src/ExpandMoreIcon'
+import ExpandMoreIcon from '@jqcode/c-icons/src/ExpandMoreIcon'
 import IconButton from '../IconButton'
 
 const ExpandMoreIconButton = ({ iconProps, ...props }) => (

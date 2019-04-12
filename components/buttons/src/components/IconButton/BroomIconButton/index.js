@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import BroomIcon from '@nanoteam/c-icons/src/BroomIcon'
+import BroomIcon from '@jqcode/c-icons/src/BroomIcon'
 import IconButton from '../IconButton'
 
 const BroomIconButton = ({ iconProps, ...props }) => (

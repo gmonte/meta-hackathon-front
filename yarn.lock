@@ -8227,6 +8227,11 @@ no-case@^2.2.0:
   dependencies:
     lower-case "^1.1.1"
 
+node-addon-api@^1.6.1:
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-1.6.3.tgz#3998d4593e2dca2ea82114670a4eb003386a9fe1"
+  integrity sha512-FXWH6mqjWgU8ewuahp4spec8LkroFZK2NicOv6bNwZC3kcwZUI8LeZdG80UzTSLLhK4T7MsgNwlYDVRlDdfTDg==
+
 node-fetch-npm@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/node-fetch-npm/-/node-fetch-npm-2.0.2.tgz#7258c9046182dca345b4208eda918daf33697ff7"
@@ -12058,6 +12063,13 @@ xz-utils@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/xz-utils/-/xz-utils-1.0.2.tgz#d0c4ea6fbcb002bf4a977eb1e9ceec4a4b5f71f0"
   integrity sha1-0MTqb7ywAr9Kl36x6c7sSktfcfA=
+
+xz@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/xz/-/xz-2.0.0.tgz#ec7c7eaaa3073280550b94a09e7eb2c7e2b3d156"
+  integrity sha512-uhSBiYaqIEXeo+weXprfJPxeO9QF+TJ0X6qHlp2st8thWVBv2hJgy4XwenCJ3dVZbWQDkxtdBkUcFQid2jhHyQ==
+  dependencies:
+    node-addon-api "^1.6.1"
 
 "y18n@^3.2.1 || ^4.0.0", y18n@^4.0.0:
   version "4.0.0"

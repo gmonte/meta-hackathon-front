@@ -1,5 +1,5 @@
 import React from 'react'
-import UnselectedIcon from '@nanoteam/c-icons/src/UnselectedIcon'
+import UnselectedIcon from '@jqcode/c-icons/src/UnselectedIcon'
 import IconButton from '../IconButton'
 
 const UnselectedIconButton = props => (

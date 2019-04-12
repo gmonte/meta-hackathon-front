@@ -1,5 +1,5 @@
 import React from 'react'
-import EyeIcon from '@nanoteam/c-icons/src/EyeIcon'
+import EyeIcon from '@jqcode/c-icons/src/EyeIcon'
 import PropTypes from 'prop-types'
 import IconButton from '../IconButton'
 

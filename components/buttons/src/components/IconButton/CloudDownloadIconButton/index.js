@@ -1,5 +1,5 @@
 import React from 'react'
-import CloudDownloadIcon from '@nanoteam/c-icons/src/CloudDownloadIcon'
+import CloudDownloadIcon from '@jqcode/c-icons/src/CloudDownloadIcon'
 import IconButton from '../IconButton'
 
 const CloudDownloadIconButton = props => (

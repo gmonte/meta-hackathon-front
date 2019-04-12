@@ -1,5 +1,5 @@
 import React from 'react'
-import SaveIcon from '@nanoteam/c-icons/src/SaveIcon'
+import SaveIcon from '@jqcode/c-icons/src/SaveIcon'
 import IconButton from '../IconButton'
 
 const SaveIconButton = props => (

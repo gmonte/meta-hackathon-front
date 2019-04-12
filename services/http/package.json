@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@nanoteam/s-http",
+  "name": "@jqcode/s-http",
   "version": "0.0.0",
   "main": "src/index.js",
   "license": "MIT",
@@ -8,8 +8,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@nanoteam/functions": "^0.0.0",
-    "@nanoteam/c-snackbars": "^0.0.0",
+    "@jqcode/functions": "^0.0.0",
+    "@jqcode/c-snackbars": "^0.0.0",
     "downloadjs": "^1.4.7"
   }
 }

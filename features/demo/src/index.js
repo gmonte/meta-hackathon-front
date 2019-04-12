@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-import Button from '@nanoteam/c-buttons/src/components/Button'
+import Button from '@jqcode/c-buttons/src/components/Button'
 
 import styles from './styles'
 

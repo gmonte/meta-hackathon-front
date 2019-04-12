@@ -1,5 +1,5 @@
 import React from 'react'
-import SchoolIcon from '@nanoteam/c-icons/src/SchoolIcon'
+import SchoolIcon from '@jqcode/c-icons/src/SchoolIcon'
 import IconButton from '../IconButton'
 
 const SchoolIconButton = props => (

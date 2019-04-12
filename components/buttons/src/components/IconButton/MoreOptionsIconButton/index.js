@@ -1,5 +1,5 @@
 import React from 'react'
-import MoreOptionsIcon from '@nanoteam/c-icons/src/MoreOptionsIcon'
+import MoreOptionsIcon from '@jqcode/c-icons/src/MoreOptionsIcon'
 import IconButton from '../IconButton'
 
 export default props => (

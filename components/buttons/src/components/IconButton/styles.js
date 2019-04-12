@@ -1,4 +1,4 @@
-import Colors from '@nanoteam/c-styles/src/styles/Colors'
+import Colors from '@jqcode/c-styles/src/styles/Colors'
 import styleButton from '../Button/styles'
 
 export default (theme) => {

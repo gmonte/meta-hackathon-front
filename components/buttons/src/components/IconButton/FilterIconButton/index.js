@@ -1,5 +1,5 @@
 import React from 'react'
-import FilterIcon from '@nanoteam/c-icons/src/FilterIcon'
+import FilterIcon from '@jqcode/c-icons/src/FilterIcon'
 import IconButton from '../IconButton'
 
 const FilterIconButton = props => (

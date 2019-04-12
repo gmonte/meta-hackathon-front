@@ -2,7 +2,7 @@
 import isEmpty from 'lodash/isEmpty'
 import isObject from 'lodash/isObject'
 import trim from 'lodash/trim'
-import serialize from '@nanoteam/functions/src/serialize'
+import serialize from '@jqcode/functions/src/serialize'
 import download from 'downloadjs'
 import getLodash from 'lodash/get'
 

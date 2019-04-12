@@ -1,5 +1,5 @@
 import React from 'react'
-import DeleteCircleIcon from '@nanoteam/c-icons/src/DeleteCircleIcon'
+import DeleteCircleIcon from '@jqcode/c-icons/src/DeleteCircleIcon'
 import IconButton from '../IconButton'
 
 const DeleteCircleIconButton = props => (

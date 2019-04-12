@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import AddIcon from '@nanoteam/c-icons/src/AddIcon'
+import AddIcon from '@jqcode/c-icons/src/AddIcon'
 import IconButton from '../IconButton'
 
 const Index = props => (

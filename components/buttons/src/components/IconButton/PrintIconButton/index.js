@@ -1,5 +1,5 @@
 import React from 'react'
-import PrintIcon from '@nanoteam/c-icons/src/PrintIcon'
+import PrintIcon from '@jqcode/c-icons/src/PrintIcon'
 import IconButton from '../IconButton'
 
 const PrintIconButton = props => (
