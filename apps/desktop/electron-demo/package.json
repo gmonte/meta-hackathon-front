@@ -1,0 +1,103 @@
+{
+  "private": true,
+  "name": "@nanoteam/app-desktop-electron-demo",
+  "description": "An Electron application demo",
+  "homepage": "https://github.com/gmonte/meta-hackathon-front",
+  "author": {
+    "name" : "Guilherme Monte",
+    "email" : "gmonte@inf.ufsm.br"
+  },
+  "version": "0.0.0",
+  "main": "main.js",
+  "license": "MIT",
+  "build": {
+    "appId": "com.nanoteam.electron-demo",
+    "productName": "electron demo",
+    "copyright": "Nanoteam",
+    "directories": {
+      "buildResources": "build",
+      "output": "releases"
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "files": [
+      "*.js",
+      "build"
+    ],
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "mac": {
+      "category": "public.app-category.finance",
+      "identity": "8A514C308086DAC10EA1286EDE70AD697B3F5FAE"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "perMachine": true,
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": false
+    }
+  },
+  "devDependencies": {
+    "electron": "^3.0.10",
+    "electron-builder": "^20.36.2",
+    "electron-reload": "^1.3.0",
+    "npm-run-all": "^4.1.2"
+  },
+  "dependencies": {
+    "electron-log": "^2.2.17",
+    "@nanoteam/app-web-demo": "^0.0.0",
+    "source-map-support": "^0.5.9",
+    "utf8": "^3.0.0",
+    "kill-port": "^1.3.2",
+    "node-http-server": "^8.1.2",
+    "xz": "^2.0.0",
+    "xz-utils": "^1.0.2"
+  },
+  "scripts": {
+    "bootstrap": "cd ../../../ && yarn bootstrap",
+    "bundle": "webpack --config config/webpack.config.js --mode production",
+    "bundle:dev": "webpack --config config/webpack.config.js --mode development -w --info false --quiet",
+    "clean": "rm -rf ./releases && mkdir releases && cd releases && mkdir @nanoteam",
+    "electron-builder-app:mac": "yarn clean && electron-builder -m",
+    "electron-builder-app:linux": "yarn clean && electron-builder -l",
+    "electron-builder-app:win": "yarn clean && electron-builder -w",
+    "electron-main": "webpack --config config/webpack.electron.main.config.js --mode production",
+    "electron-main:dev": "webpack --config config/webpack.electron.main.config.js --mode development -w --info false --quiet",
+    "logs:mac": "webstorm ~/Library/Logs/@nanoteam/electron-demo/log.log",
+    "logs:linux": "code ~/.config/@nanoteam/electron-demo/log.log",
+    "postinstall": "electron-builder install-app-deps",
+    "serve": "ELECTRON_ENV=development electron .",
+    "start": "npm-run-all --parallel electron-main:dev bundle:dev",
+    "build": "yarn electron-main && yarn bundle",
+    "release:mac": "yarn build && yarn electron-builder-app:mac",
+    "release:linux": "yarn build && yarn electron-builder-app:linux",
+    "release:win": "yarn build && yarn electron-builder-app:win"
+  }
+}

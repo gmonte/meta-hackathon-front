@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@nanoteam/ot-demo",
+  "name": "@nanoteam/app-web-demo",
   "version": "0.0.0",
   "description": "Demo theme. Demonstrates the basic concepts of the front-end theming deployed by lerna monorepo",
   "main": "src/index.js",
