@@ -8,7 +8,7 @@ export default () => ({
     lineHeight: 1,
     padding: '16px 48px 16px',
     letterSpacing: '2px',
-    minWidth: '320px',
+    minWidth: '350px',
     textTransform: 'uppercase',
     whiteSpace: 'normal',
     textAlign: 'center',

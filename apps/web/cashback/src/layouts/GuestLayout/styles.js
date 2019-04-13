@@ -15,6 +15,11 @@ export default () => ({
     justifyContent: 'center'
   },
   logo: {
-    width: '100%'
+    width: 100
+  },
+  toolbarContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 })

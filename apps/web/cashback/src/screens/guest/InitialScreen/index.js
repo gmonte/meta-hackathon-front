@@ -25,7 +25,7 @@ class InitialScreen extends Component {
     const {
       classes,
       // history
-      authStore: store
+      authStore: store,
     } = this.props
 
     const {
