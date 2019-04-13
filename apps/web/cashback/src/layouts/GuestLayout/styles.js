@@ -2,24 +2,19 @@ export default () => ({
   container: {
     display: 'flex',
     flexDirection: 'column',
-    flex: 1,
-    backgroundColor: 'lightBlue'
-  },
-  containerContent: {
-    width: '100%',
-    backgroundColor: '#ff0000'
+    justifyContent: 'center',
+    flex: 1
   },
   header: {
-    display: 'flex'
+    display: 'flex',
+    borderBottom: '2px solid #00193e'
   },
   content: {
-    height: '100%'
+    height: '100%',
+    display: 'grid',
+    justifyContent: 'center'
   },
   logo: {
-    width: '80%',
-    boxShadow: 'none',
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat'
+    width: '100%'
   }
 })

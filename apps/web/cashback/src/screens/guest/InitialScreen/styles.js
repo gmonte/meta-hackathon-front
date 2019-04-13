@@ -3,9 +3,12 @@ import Fonts from '@jqcode/c-styles/src/styles/Fonts'
 
 export default () => ({
   container: {
-    display: 'flex',
-    flex: 1,
-    flexDirection: 'column',
+    padding: 0,
+    margin: 0,
     alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column'
   }
 })
