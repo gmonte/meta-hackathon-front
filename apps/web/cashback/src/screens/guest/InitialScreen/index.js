@@ -8,7 +8,6 @@ import Grid from '@material-ui/core/Grid'
 import Typography from '@material-ui/core/Typography'
 import { getDataList } from '@jqcode/s-firebase'
 import Divider from '@material-ui/core/Divider'
-// import FacebookIcon from '@jqcode/c-icons/src/FacebookIcon'
 import ActiveIcon from '@jqcode/c-icons/src/ActiveIcon'
 import GoogleIcon from 'mdi-material-ui/Google'
 import FacebookIcon from 'mdi-material-ui/FacebookBox'
@@ -49,8 +48,8 @@ class InitialScreen extends Component {
           xm={ 12 }
           className={ classes.container }
         >
-          <Typography variant="subtitle2"><b>Entre ou crie sua conta.</b></Typography>
-          <Divider light variant="middle" style={ { width: '70%', height: '2px', margin: '5px' } } />
+          <Typography variant="subtitle2" style={ { textAlign: 'center'} }><b>Entre ou crie sua conta.</b></Typography>
+          <Divider light variant="middle" style={ { width: '100%', height: '2px', margin: '5px' } } />
           <Button
             onClick={ signInWithFacebook }
             loading={ loading }
@@ -67,16 +66,6 @@ class InitialScreen extends Component {
           >
             <span>Entrar com Google</span>
           </Button>
-          <Button
-            onClick={ this.createUser }
-            loading={ loading }
-            btnClass={ [classes.buttons, classes.login].join(' ') }
-            iconLeft={ AccountIcon }
-
-          >
-            <span>Entrar</span>
-          </Button>
-
           <FormLogin
             loading={ loading }
             auth={ store }

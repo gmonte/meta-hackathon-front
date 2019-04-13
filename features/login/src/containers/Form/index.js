@@ -10,6 +10,7 @@ import { withStores } from '@jqcode/c-stores-provider'
 import Button from '@jqcode/c-buttons/src/components/Button'
 import get from 'lodash/get'
 import formLoginStore from '../../store'
+import AccountIcon from 'mdi-material-ui/Account'
 
 import styles from './styles'
 
@@ -104,7 +105,8 @@ class FormContainer extends Component {
   render() {
     const {
       formLoginStore: store,
-      loading
+      loading,
+      classes
     } = this.props
 
     const {
@@ -131,7 +133,7 @@ class FormContainer extends Component {
         >
           <TextInput
             name="email"
-            label="e-mail"
+            label="E-mail"
             helperText="Informe o seu email"
             value={ email.value.toString() }
             isValid={ email.isValid }
@@ -166,6 +168,8 @@ class FormContainer extends Component {
           onClick={ this.submit }
           loading={ loading }
           disabled={ !changed }
+          btnClass={ classes.btn }
+          iconLeft={ AccountIcon }
         >
           Entrar
         </Button>

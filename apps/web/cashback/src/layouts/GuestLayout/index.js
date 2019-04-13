@@ -39,7 +39,6 @@ class GuestLayout extends PureComponent {
     return (
       <Grid
         container
-        wrap="wrap"
       >
         <Grid
           item
@@ -49,7 +48,7 @@ class GuestLayout extends PureComponent {
           lg={ 12 }
           className={ classes.container }
         >
-          <AppBar position="static" color="default">
+          <AppBar position="static" color="default" className={ classes.header }>
             <Toolbar>
 
             </Toolbar>
@@ -57,15 +56,6 @@ class GuestLayout extends PureComponent {
           <Card className={ classes.content }>
             { children }
           </Card>
-          <BottomNavigation
-            value={value}
-            onChange={this.handleChange}
-            showLabels
-            className={classes.root}
-          >
-            <BottomNavigationAction label="Usar Saldo" icon={<CashIcon />} />
-          </BottomNavigation>
-
         </Grid>
 
       </Grid>
