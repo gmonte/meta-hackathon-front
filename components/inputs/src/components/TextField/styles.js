@@ -1,5 +1,6 @@
-import formControlCommons from '../styles'
 import Colors from '@jqcode/c-styles/src/styles/Colors'
+import formControlCommons from '../styles'
+
 
 export default (theme) => {
   const { hint } = formControlCommons(theme)

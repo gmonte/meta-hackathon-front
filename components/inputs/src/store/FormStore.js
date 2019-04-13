@@ -247,29 +247,27 @@ class FormStore {
   }) => {
     const tempPaths = [path, controlPath]
     // percorre cada bloco de controls vindo da api para aplicar em um repeater
-    const blocks = map(controlValue, (block, index) =>
-      // percorre as chaves de cada bloco do repeater
-      mapValues(controlField, (field, key) => {
-        const customControlPath = `${ controlPath }.value[${ index }].${ key }`
-        const originalField = get(this.formControls, `${ controlPath }.value[${ index }].${ key }`)
+    const blocks = map(controlValue, (block, index) => mapValues(controlField, (field, key) => {
+      const customControlPath = `${ controlPath }.value[${ index }].${ key }`
+      const originalField = get(this.formControls, `${ controlPath }.value[${ index }].${ key }`)
 
-        const parentsPath = this.discoverParentsPath({
-          tempPaths,
-          originalField,
-          customControlPath
-        })
+      const parentsPath = this.discoverParentsPath({
+        tempPaths,
+        originalField,
+        customControlPath
+      })
 
-        return {
-          ...this.mountStructData({
-            valueFromApi: get(valueFromApi, `[${ index }].${ key }`),
-            actualControl: originalField || field,
-            controlPath: customControlPath,
-            path
-          }),
-          parentsPath
-        }
-        // return data
-      }))
+      return {
+        ...this.mountStructData({
+          valueFromApi: get(valueFromApi, `[${ index }].${ key }`),
+          actualControl: originalField || field,
+          controlPath: customControlPath,
+          path
+        }),
+        parentsPath
+      }
+      // return data
+    }))
 
     // console.warn('mounted ArrayRepeater', path, blocks, controlValue)
 
@@ -445,8 +443,8 @@ class FormStore {
 
     const mapForChildrens = (parentControl, parentName) => {
       if (
-        isObject(parentControl.value) ||
-        (isArray(parentControl.value) && !isEmpty(parentControl.fields))
+        isObject(parentControl.value)
+        || (isArray(parentControl.value) && !isEmpty(parentControl.fields))
       ) {
         forEach(parentControl.value, (item, key) => {
           if (isNumber(key)) {
@@ -921,11 +919,11 @@ class FormStore {
 
       if (isArray(value)) {
         return value
-      } else if (isObject(value)) {
+      } if (isObject(value)) {
         return mapValues(value, item => getValues(item))
-      } else if (!isEmpty(value)) {
+      } if (!isEmpty(value)) {
         return trim(value)
-      } else if (isBoolean(value) || isNumber(value)) {
+      } if (isBoolean(value) || isNumber(value)) {
         return value
       }
       return null

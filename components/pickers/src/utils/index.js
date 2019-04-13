@@ -47,4 +47,3 @@ export const monthYearMask = [
   '/',
   /\d/, /\d/, /\d/, /\d/ // YYYY
 ]
-

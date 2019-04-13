@@ -31,8 +31,11 @@ class TextField extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (!isEqual(prevProps.value, this.props.value)) {
-      this.onInputChange({ target: { value: this.props.value } })
+    const {
+      value
+    } = this.props
+    if (!isEqual(prevProps.value, value)) {
+      this.onInputChange({ target: { value } })
     }
   }
 
@@ -192,11 +195,14 @@ class TextField extends Component {
     const hint = (
       <Fragment>
         { helperText }
-        { error ?
-          <Fragment>
-            <br />{ errorText }
-          </Fragment>
-          : null
+        { error
+          ? (
+            <Fragment>
+              <br />
+              {' '}
+              { errorText }
+            </Fragment>
+          ) : null
         }
       </Fragment>
     )
@@ -224,8 +230,8 @@ class TextField extends Component {
 
       if (!isEmpty(fromRules) || !isEmpty(toRules)) {
         isRequired = (
-          indexOf(fromRules, 'required') >= 0 ||
-          indexOf(toRules, 'required') >= 0
+          indexOf(fromRules, 'required') >= 0
+          || indexOf(toRules, 'required') >= 0
         )
       }
     }

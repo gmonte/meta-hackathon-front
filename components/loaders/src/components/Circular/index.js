@@ -25,7 +25,10 @@ class Circular extends Component {
   }
 
   showLoader = () => {
-    if (this.props.visible) {
+    const {
+      visible
+    } = this.props
+    if (visible) {
       this.setState({ showing: true })
     }
   }
