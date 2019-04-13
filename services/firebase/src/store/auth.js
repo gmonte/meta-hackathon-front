@@ -86,12 +86,17 @@ class Auth {
   }
 
   async createUserApi(user) {
-    await createUser({
-      name: get(user, 'displayName', null),
-      email: get(user, 'name'),
-      uid: get(user, 'uid')
-    })
-    this.loading = false
+    try {
+      await createUser({
+        name: get(user, 'displayName', null),
+        email: get(user, 'name'),
+        uid: get(user, 'uid')
+      })
+      this.loading = false
+    } catch (e) {
+      this.loading = false
+      throw e
+    }
   }
 
   @action
