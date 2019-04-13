@@ -8,9 +8,9 @@ import Form from '@jqcode/c-inputs/src/components/Form'
 import TextInput from '@jqcode/c-inputs/src/components/TextInput'
 import { withStores } from '@jqcode/c-stores-provider'
 import Button from '@jqcode/c-buttons/src/components/Button'
+import AccountIcon from 'mdi-material-ui/Account'
 import get from 'lodash/get'
 import formLoginStore from '../../store'
-import AccountIcon from 'mdi-material-ui/Account'
 
 import styles from './styles'
 
@@ -29,8 +29,6 @@ class FormContainer extends Component {
       },
       errorText: null
     }
-
-    console.warn('asiudhsaiuhdsiuahuidsahuiadhuidsh')
   }
 
   componentDidMount() {
