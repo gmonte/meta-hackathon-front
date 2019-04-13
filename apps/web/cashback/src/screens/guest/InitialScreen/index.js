@@ -1,31 +1,24 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
+import Card from '@material-ui/core/Card'
 import Button from '@jqcode/c-buttons/src/components/Button'
+import Grid from '@material-ui/core/Grid'
 import { getDataList } from '@jqcode/s-firebase'
-import TextInput from '@jqcode/inputs/src/components/TextInput'
 
 import styles from './styles'
 
 class InitialScreen extends Component {
   constructor(props) {
     super(props)
-    this.getUsers = this.getUsers.bind(this)
     this.createUser = this.createUser.bind(this)
     this.signUser = this.signUser.bind(this)
-    this.signGoogleUser = this.signGoogleUser.bind(this)
-    this.signFacebookUser = this.signFacebookUser.bind(this)
   }
 
   componentDidMount() {
     // this.getUsers()
     // this.createUser()
     // this.signUser()
-  }
-
-  async getUsers() {
-    const response = await getDataList('users')
-    console.warn('users list', response)
   }
 
   async createUser() {
@@ -36,7 +29,7 @@ class InitialScreen extends Component {
     } = this.props
 
     createUserWithEmailAndPassword({
-      email: 'email@test.com',
+      email: 'email2@test.com',
       password: '123456'
     })
   }
@@ -54,62 +47,41 @@ class InitialScreen extends Component {
     })
   }
 
-  async signGoogleUser() {
-    const {
-      auth: {
-        signInWithGoogle
-      }
-    } = this.props
-
-    signInWithGoogle()
-  }
-
-  async signFacebookUser() {
-    const {
-      auth: {
-        signInWithFacebook
-      }
-    } = this.props
-
-    signInWithFacebook()
-  }
-
   render() {
     const {
       classes,
       // history
       auth: {
-        loading
+        loading,
+        signInWithFacebook,
+        signInWithGoogle
       }
     } = this.props
 
     return (
-      <div
-        className={ classes.container }
+      <Grid
+        container
+        wrap="wrap"
       >
-        <Button
-          onClick={ this.signUser }
-          loading={ loading }
-          vertical
-          btnClass={ classes.buttons }
+        <Grid
+          item
+          lg={ 12 }
+          md={ 12 }
+          sm={ 12 }
+          xm={ 12 }
+          className={ classes.container }
         >
-          Login
-        </Button>
-        <Button
-          onClick={ this.signFacebookUser }
-          loading={ loading }
-          vertical
-          btnClass={ classes.buttons }
-        >
-          Facebook
-        </Button>
-        <Form
-
-        >
-          <TextInput name="email" className={ classes.inputs } />
-          <TextInput name="senha" className={ classes.inputs } />
-        </Form>
-      </div>
+          <Button onClick={ this.createUser } loading={ loading }>
+            Login Email
+          </Button>
+          <Button onClick={ signInWithFacebook } loading={ loading }>
+            Login Facebook
+          </Button>
+          <Button onClick={ signInWithGoogle } loading={ loading }>
+            Login Google
+          </Button>
+        </Grid>
+      </Grid>
     )
   }
 }

@@ -1,4 +1,6 @@
 import { observable, action } from 'mobx'
+import get from 'lodash'
+import { createUser } from '@jqcode/s-user'
 import { firebaseAuth } from '../utils'
 
 class Auth {
@@ -6,6 +8,9 @@ class Auth {
     this.initFirebaseAuth = this.initFirebaseAuth.bind(this)
     this.createUserWithEmailAndPassword = this.createUserWithEmailAndPassword.bind(this)
     this.signInWithEmailAndPassword = this.signInWithEmailAndPassword.bind(this)
+    this.signInWithGoogle = this.signInWithGoogle.bind(this)
+    this.signInWithFacebook = this.signInWithFacebook.bind(this)
+    this.createUserApi = this.createUserApi.bind(this)
     this.signOut = this.signOut.bind(this)
 
     this.initFirebaseAuth()
@@ -44,23 +49,9 @@ class Auth {
     try {
       this.loading = true
       const response = await firebaseAuth().createUserWithEmailAndPassword(email, password)
-      this.loading = false
-      console.warn('createUserWithEmailAndPassword response', response)
+      this.createUserApi(response)
     } catch (e) {
       console.error('Error when was creating the user with email and password', e)
-      this.loading = false
-      throw e
-    }
-  }
-
-  @action
-  async signInWithEmailAndPassword({ email, password }) {
-    try {
-      this.loading = true
-      await firebaseAuth().signInWithEmailAndPassword(email, password)
-      this.loading = false
-    } catch (e) {
-      console.error('Error when was logging the user with email and password', e)
       this.loading = false
       throw e
     }
@@ -72,8 +63,7 @@ class Auth {
       this.loading = true
       const provider = new firebaseAuth.GoogleAuthProvider()
       const response = await firebaseAuth().signInWithPopup(provider)
-      console.warn('google response', response)
-      this.loading = false
+      this.createUserApi(response)
     } catch (e) {
       console.error('Error when was logging the user with google', e)
       this.loading = false
@@ -87,10 +77,36 @@ class Auth {
       this.loading = true
       const provider = new firebaseAuth.FacebookAuthProvider()
       const response = await firebaseAuth().signInWithPopup(provider)
-      console.warn('facebook response', response)
-      this.loading = false
+      this.createUserApi(response)
     } catch (e) {
       console.error('Error when was logging the user with facebook', e)
+      this.loading = false
+      throw e
+    }
+  }
+
+  async createUserApi(user) {
+    try {
+      await createUser({
+        name: get(user, 'displayName', null),
+        email: get(user, 'name'),
+        uid: get(user, 'uid')
+      })
+      this.loading = false
+    } catch (e) {
+      this.loading = false
+      throw e
+    }
+  }
+
+  @action
+  async signInWithEmailAndPassword({ email, password }) {
+    try {
+      this.loading = true
+      await firebaseAuth().signInWithEmailAndPassword(email, password)
+      this.loading = false
+    } catch (e) {
+      console.error('Error when was logging the user with email and password', e)
       this.loading = false
       throw e
     }
