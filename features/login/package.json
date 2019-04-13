@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "name": "@jqcode/f-login",
+  "version": "0.0.0",
+  "main": "src/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@jqcode/c-inputs": "^0.0.0",
+    "@jqcode/c-buttons": "^0.0.0"
+  }
+}

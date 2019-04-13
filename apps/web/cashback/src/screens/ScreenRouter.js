@@ -22,7 +22,6 @@ const forceRefresh = !supportsHistory()
 @inject('authStore')
 @observer
 class ScreenRouter extends Component {
-
   render() {
     const {
       classes,
@@ -48,7 +47,7 @@ class ScreenRouter extends Component {
       <Router forceRefresh={ forceRefresh }>
         <Fragment>
           <Suspense fallback={ <div /> }>
-            <RouterContext auth={ authStore } />
+            <RouterContext />
           </Suspense>
         </Fragment>
       </Router>

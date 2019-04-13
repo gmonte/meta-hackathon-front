@@ -13,6 +13,7 @@ import time from './time'
 import monthYear from './monthYear'
 import cpfCnpj, { cpfCnpjPre } from './cpfCnpj'
 import cnpj from './cnpj'
+import email from './email'
 
 const applyRulesAndValidate = (rules, value) => {
   let response = {
@@ -93,6 +94,13 @@ const applyRulesAndValidate = (rules, value) => {
           response = {
             ...response,
             ...time({ value })
+          }
+          break
+
+        case 'email':
+          response = {
+            ...response,
+            ...email({ value })
           }
           break
 

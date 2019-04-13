@@ -9,7 +9,6 @@ import isObject from 'lodash/isObject'
 import isBoolean from 'lodash/isBoolean'
 import isNumber from 'lodash/isNumber'
 import isEmpty from 'lodash/isEmpty'
-import isFunction from 'lodash/isFunction'
 import trim from 'lodash/trim'
 import findKey from 'lodash/findKey'
 import reverse from 'lodash/reverse'
@@ -19,28 +18,15 @@ import get from 'lodash/get'
 import find from 'lodash/find'
 import difference from 'lodash/difference'
 import forEach from 'lodash/forEach'
-import indexOf from 'lodash/indexOf'
-import remove from 'lodash/remove'
-import reduce from 'lodash/reduce'
 import toString from 'lodash/toString'
-import toArray from 'lodash/toArray'
 import uniq from 'lodash/uniq'
 import cloneDeep from 'lodash/cloneDeep'
-import flow from 'lodash/fp/flow'
-import filterFP from 'lodash/fp/filter'
-import reduceFP from 'lodash/fp/reduce'
-import keyByFP from 'lodash/fp/keyBy'
-import mapValuesFP from 'lodash/fp/mapValues'
 import applyRulesAndValidate from '../rules'
 
 class FormStore {
   constructor({ initialFormControls }) {
     this.submit = this.submit.bind(this)
-    this.execSubmitForm = this.execSubmitForm.bind(this)
-    this.getApiControlsData = this.getApiControlsData.bind(this)
     this.resetForm = this.resetForm.bind(this)
-    this.getDynamicControls = this.getDynamicControls.bind(this)
-    this.getDynamicControl = this.getDynamicControl.bind(this)
     this.setInitialControls = this.setInitialControls.bind(this)
     this.init = this.init.bind(this)
 
@@ -66,7 +52,6 @@ class FormStore {
   @action
   async init(initialFormControls) {
     await this.setInitialControls(initialFormControls)
-    await this.getDynamicControls()
     this.bootstrapControls()
   }
 
@@ -157,54 +142,6 @@ class FormStore {
 
   resetFormStatus = () => {
     this.formStatus = { ...this.initialFormStatus }
-  }
-
-  @action
-  async getDynamicControls() {
-    const promises = map(this.formControls, this.getDynamicControl)
-    let controls = await Promise.all(promises)
-
-    controls = flow(
-      filterFP(control => control),
-      reduceFP((acc, item) => ({ ...acc, ...item }), {})
-    )(controls)
-
-    forEach(controls, (subControls, key) => {
-      const control = get(this.formControls, key, {})
-      this.formControls = {
-        ...this.formControls,
-        [key]: {
-          ...control,
-          value: {
-            ...get(control, 'value', {}),
-            ...subControls
-          }
-        }
-      }
-    })
-
-    this.setOriginalControls(this.formControls)
-  }
-
-  async getDynamicControl(control, controlName) {
-    const getControls = get(control, 'getControls')
-    if (getControls) {
-      const { response = [] } = await getControls()
-      return {
-        [controlName]: flow(
-          keyByFP('name'),
-          mapValuesFP(item => ({
-            ...item,
-            value: toString(get(item, 'defaultValue')),
-            options: map(get(item, 'options', []), option => ({
-              ...option,
-              value: toString(get(option, 'value'))
-            }))
-          }))
-        )(response)
-      }
-    }
-    return null
   }
 
   @action
@@ -520,13 +457,6 @@ class FormStore {
         ...oldControl,
         ...control
       })
-
-      const parentsPath = get(oldControl, 'parentsPath')
-
-      if (!isEmpty(parentsPath)) {
-        remove(parentsPath, parent => parent === controlName)
-        this.checkForInvalidsChildrens(parentsPath)
-      }
     }
 
     if (setAsOriginal) {
@@ -540,7 +470,6 @@ class FormStore {
   async resetForm() {
     this.resetFormControls()
     this.resetFormStatus()
-    await this.getDynamicControls()
     this.bootstrapControls()
   }
 
@@ -610,18 +539,7 @@ class FormStore {
       * caso o formulário esteja validado(this.formControls,
       * efetuamos o submit
       * */
-      try {
-        await this.execSubmitForm()
-        this.onSuccess(this.formValues)
-      } catch (e) {
-        /*
-        *  Se der pau no request, roda o fallback
-        *  e passa adiante o erro
-        * */
-        this.fallback()
-
-        throw e
-      }
+      this.onSuccess(this.formValues)
     }
   }
 
@@ -631,235 +549,11 @@ class FormStore {
   }
 
   @action
-  async execSubmitForm() {
-    try {
-      this.resetFormStatus()
-      this.formStatus = {
-        ...this.formStatus,
-        loading: true
-      }
-
-      let data = this.formValues
-      if (isFunction(this.transformDataToApi)) {
-        data = this.transformDataToApi(data)
-      }
-
-      if (this.formMode.create && isFunction(this.services.create)) {
-        await this.services.create(data)
-      } else if (this.formMode.update && isFunction(this.services.update)) {
-        await this.services.update({
-          ...data,
-          id: this.formMode.update
-        })
-      }
-
-      this.formStatus = {
-        ...this.formStatus,
-        loading: false
-      }
-    } catch (e) {
-      this.formStatus = {
-        ...this.formStatus,
-        loading: false
-      }
-      if (isFunction(this.onSubmitError)) {
-        this.onSubmitError(e)
-      }
-      throw e
-    }
-  }
-
-  @action
-  async getApiControlsData(item, mode) {
-    try {
-      if (isFunction(get(this.services, 'get'))) {
-        this.changeFormMode(mode)
-
-        this.formStatus = {
-          ...this.formStatus,
-          loading: true
-        }
-
-        let { response } = await this.services.get(item)
-        if (isFunction(this.transformApiData)) {
-          response = this.transformApiData(response)
-        }
-
-        this.injectExistingControls({ ...response }, mode)
-
-        this.formStatus = {
-          ...this.formStatus,
-          loading: false
-        }
-      }
-    } catch (e) {
-      this.formStatus = {
-        ...this.formStatus,
-        loading: false,
-        error: true
-      }
-      this.fallback()
-      throw e
-    }
-  }
-
-  @action
-  validateFormFromFilter = () => {
-    const {
-      controlsAfterValidation,
-      hasInvalidControls
-    } = this.validateForm()
-
-    if (!hasInvalidControls) {
-      this.changeOriginal(controlsAfterValidation)
-      if (isFunction(this.transformDataToApi)) {
-        return {
-          controlsAfterValidation: this.transformDataToApi(controlsAfterValidation),
-          hasInvalidControls
-        }
-      }
-      return {
-        controlsAfterValidation,
-        hasInvalidControls
-      }
-    }
-    return { hasInvalidControls }
-  }
-
-  @action
   changeOriginal = (original) => {
     if (isEmpty(original)) {
       original = this.formControls
     }
     this.original = cloneDeep(original)
-  }
-
-  @action
-  changeControlRules = (controlName, newRules = [], add = true) => {
-    let control = get(this.formControls, controlName, {})
-    let controlRules = get(control, 'rules', [])
-
-    forEach(newRules, (rule) => {
-      if (add) {
-        if (indexOf(controlRules, rule) < 0) {
-          controlRules = [
-            ...controlRules,
-            rule
-          ]
-        }
-      } else {
-        // remove
-        remove(controlRules, oldRule => oldRule === rule)
-      }
-    })
-
-    control = {
-      ...control,
-      rules: controlRules
-    }
-    this.changeFormControl(controlName, control)
-    const { controlsAfterValidation } = this.validateForm()
-    this.formControls = controlsAfterValidation
-  }
-
-  @action
-  changeAllControlsRules = (controls, validate = false) => {
-
-    let newControls = map(controls, ({ controlName, newRules, add }) => {
-      const control = get(this.formControls, controlName, {})
-      let controlRules = get(control, 'rules', [])
-
-      forEach(newRules, (rule) => {
-        if (add) {
-          if (indexOf(controlRules, rule) < 0) {
-            controlRules = [
-              ...controlRules,
-              rule
-            ]
-          }
-        } else {
-          // remove
-          remove(controlRules, oldRule => oldRule === rule)
-        }
-      })
-
-      return {
-        [controlName]: {
-          ...control,
-          rules: controlRules
-        }
-      }
-    })
-
-    newControls = reduce(
-      newControls,
-      (result, control) => ({ ...result, ...control }),
-      {}
-    )
-
-    this.changeAllFormControls(newControls)
-
-    if (validate) {
-      const { controlsAfterValidation } = this.validateForm()
-      this.formControls = controlsAfterValidation
-    }
-  }
-
-  @action
-  addFieldIndex = (controlName) => {
-    const control = get(this.formControls, controlName, null)
-
-    if (control) {
-      const { fields } = control
-      let { value } = control
-
-      value = toArray(value)
-      const newControls = this.mountStructData({
-        actualControl: {
-          ...control,
-          value: [
-            ...value,
-            cloneDeep(fields)
-          ]
-        },
-        controlPath: controlName,
-        path: controlName
-      })
-      set(this.formControls, controlName, newControls)
-      this.checkForInvalidsChildrens([controlName])
-      return true
-    }
-    return false
-  }
-
-  @action
-  removeFieldIndex = (controlName, index) => {
-    const control = get(this.formControls, controlName, null)
-
-    if (control) {
-      let { value } = control
-
-      value = cloneDeep(toArray(value))
-      remove(value, (_, i) => i === index)
-
-      let parents = [...control.parentsPath]
-      forEach(control.parentsPath, (parent) => {
-        const parentControl = get(this.formControls, parent)
-        parents = [
-          ...parents,
-          ...parentControl.parentsPath
-        ]
-        // set(this.formControls, parent, {
-        //   ...get(this.formControls, parent),
-        //   isValid: true
-        // })
-      })
-
-      set(this.formControls, `${ controlName }.value`, value)
-      this.checkForInvalidsChildrens(uniq(parents))
-      return true
-    }
-    return false
   }
 
   @action
