@@ -1,62 +1,32 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import flow from 'lodash/fp/flow'
+import { inject, observer, PropTypes as MobxPropTypes } from 'mobx-react'
+import { withStores } from '@jqcode/c-stores-provider'
 import { withStyles } from '@material-ui/core/styles'
-import Card from '@material-ui/core/Card'
-import Button from '@jqcode/c-buttons/src/components/Button'
 import Grid from '@material-ui/core/Grid'
-import { getDataList } from '@jqcode/s-firebase'
+import Button from '@jqcode/c-buttons/src/components/Button'
+import FormLogin from '@jqcode/f-login'
+import authStore from '@jqcode/s-firebase/src/store/auth'
 
-import styles from './styles'
+import globalStyles from '../../globalStyles'
 
+@inject('authStore')
+@observer
 class InitialScreen extends Component {
-  constructor(props) {
-    super(props)
-    this.createUser = this.createUser.bind(this)
-    this.signUser = this.signUser.bind(this)
-  }
-
-  componentDidMount() {
-    // this.getUsers()
-    // this.createUser()
-    // this.signUser()
-  }
-
-  async createUser() {
-    const {
-      auth: {
-        createUserWithEmailAndPassword
-      }
-    } = this.props
-
-    createUserWithEmailAndPassword({
-      email: 'email2@test.com',
-      password: '123456'
-    })
-  }
-
-  async signUser() {
-    const {
-      auth: {
-        signInWithEmailAndPassword
-      }
-    } = this.props
-
-    signInWithEmailAndPassword({
-      email: 'email@test.com',
-      password: '123456'
-    })
-  }
-
   render() {
     const {
       classes,
       // history
-      auth: {
-        loading,
-        signInWithFacebook,
-        signInWithGoogle
-      }
+      authStore: store
     } = this.props
+
+    const {
+      loading,
+      signInWithFacebook,
+      signInWithGoogle
+    } = store
+
 
     return (
       <Grid
@@ -71,15 +41,20 @@ class InitialScreen extends Component {
           xm={ 12 }
           className={ classes.container }
         >
-          <Button onClick={ this.createUser } loading={ loading }>
+          <Button onClick={ this.signUser }>
             Login Email
           </Button>
-          <Button onClick={ signInWithFacebook } loading={ loading }>
+          <Button onClick={ signInWithFacebook }>
             Login Facebook
           </Button>
-          <Button onClick={ signInWithGoogle } loading={ loading }>
+          <Button onClick={ signInWithGoogle }>
             Login Google
           </Button>
+
+          <FormLogin
+            loading={ loading }
+            auth={ store }
+          />
         </Grid>
       </Grid>
     )
@@ -88,10 +63,14 @@ class InitialScreen extends Component {
 
 InitialScreen.propTypes = {
   classes: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func.isRequired,
-  }).isRequired
+  }).isRequired,
+  // eslint-disable-next-line react/require-default-props
+  authStore: MobxPropTypes.objectOrObservableObject
 }
 
-export default withStyles(styles)(InitialScreen)
+export default flow(
+  withStores({ authStore }),
+  withStyles(globalStyles)
+)(InitialScreen)
