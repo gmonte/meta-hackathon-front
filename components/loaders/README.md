@@ -1,9 +1,9 @@
-# @jqcode/c-loaders
+# @syntesis/c-loaders
 
 > A package to create loaders
 
 ## Install
-Add `@jqcode/c-loaders` into package.json dependencies from another package.
+Add `@syntesis/c-loaders` into package.json dependencies from another package.
 
 ## Components
 
@@ -11,7 +11,7 @@ Add `@jqcode/c-loaders` into package.json dependencies from another package.
 #### Usage
 ```jsx
 import React from 'react'
-import CircularLoader from '@jqcode/c-loaders/lib/components/Circular'
+import CircularLoader from '@syntesis/c-loaders/lib/components/Circular'
 
 const Example = () => {
   return (
@@ -30,7 +30,7 @@ export default Example
 #### Usage
 ```jsx
 import React from 'react'
-import LinearLoader from '@jqcode/c-loaders/lib/components/LinearLoader'
+import LinearLoader from '@syntesis/c-loaders/lib/components/LinearLoader'
 
 const Example = () => {
   return (

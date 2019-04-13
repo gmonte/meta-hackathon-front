@@ -9,6 +9,7 @@ import { withStores } from '@jqcode/c-stores-provider'
 import { withJssThemeProvider } from '@jqcode/c-styles'
 import withSnackbars from '@jqcode/c-snackbars/src/actions/withSnackbars'
 import supportsHistory from '@jqcode/functions/src/supportsHistory'
+import CircularIndeterminate from '@jqcode/c-loaders/src/components/CircularIndeterminate'
 import authStore from '@jqcode/s-firebase/src/store/auth'
 import AuthenticatedScreenRouter from './authenticated/AuthenticatedScreenRouter'
 import GuestScreenRouter from './guest/GuestScreenRouter'
@@ -24,10 +25,20 @@ class ScreenRouter extends Component {
 
   render() {
     const {
+      classes,
       authStore: {
-        isAuthenticated
+        isAuthenticated,
+        done
       }
     } = this.props
+
+    if (!done) {
+      return (
+        <div className={ classes.waitingFirebase }>
+          <CircularIndeterminate />
+        </div>
+      )
+    }
 
     const RouterContext = isAuthenticated
       ? AuthenticatedScreenRouter

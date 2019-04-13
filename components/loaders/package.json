@@ -9,8 +9,5 @@
   },
   "dependencies": {
     "@jqcode/c-styles": "^0.0.0"
-  },
-  "scripts": {
-    "build:babel": "babel src -d lib "
   }
 }

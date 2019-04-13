@@ -14,6 +14,8 @@ class InitialScreen extends Component {
     this.getUsers = this.getUsers.bind(this)
     this.createUser = this.createUser.bind(this)
     this.signUser = this.signUser.bind(this)
+    this.signGoogleUser = this.signGoogleUser.bind(this)
+    this.signFacebookUser = this.signFacebookUser.bind(this)
   }
 
   componentDidMount() {
@@ -53,6 +55,26 @@ class InitialScreen extends Component {
     })
   }
 
+  async signGoogleUser() {
+    const {
+      auth: {
+        signInWithGoogle
+      }
+    } = this.props
+
+    signInWithGoogle()
+  }
+
+  async signFacebookUser() {
+    const {
+      auth: {
+        signInWithFacebook
+      }
+    } = this.props
+
+    signInWithFacebook()
+  }
+
   render() {
     const {
       classes,
@@ -76,6 +98,9 @@ class InitialScreen extends Component {
           className={ classes.container }
         >
           <Button onClick={ this.signUser } loading={ loading }>
+            Login
+          </Button>
+          <Button onClick={ this.signFacebookUser } loading={ loading }>
             Login
           </Button>
         </Grid>
