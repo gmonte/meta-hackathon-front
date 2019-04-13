@@ -66,9 +66,7 @@ async function request(
       headers: getHeaders({
         headers
       }),
-      data: {
-        data
-      },
+      data,
       fetchOptions,
       serializeConfig,
       json
@@ -95,17 +93,14 @@ async function request(
       if (success !== undefined) {
         // mostra snackbars de resposta se tiver pelo menos uma mensagem vinda da API
         if (!isEmpty(messages)) {
-          const env = process.env.REACT_APP_CONTEXT
-          if (env === 'web/enigma') {
-            forEach(messages, (content) => {
-              const {
-                type,
-                message
-              } = content
+          forEach(messages, (content) => {
+            const {
+              type,
+              message
+            } = content
 
-              initSnackbarByType(type, message)
-            })
-          }
+            initSnackbarByType(type, message)
+          })
         }
 
         if (!success) {

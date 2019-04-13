@@ -27,7 +27,7 @@ class Auth {
   done = false
 
   @observable
-  user = null
+  user = {}
 
   initFirebaseAuth() {
     firebaseAuth().onAuthStateChanged((user) => {
@@ -39,7 +39,7 @@ class Auth {
       } else {
         // User is signed out.
         this.authenticated = false
-        this.user = null
+        this.user = {}
         console.warn('firebase user was logged out')
       }
     })
@@ -154,6 +154,11 @@ class Auth {
   @computed
   get loading() {
     return this.loader
+  }
+
+  @computed
+  get uid() {
+    return get(this.user, 'uid')
   }
 }
 

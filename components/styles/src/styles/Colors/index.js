@@ -1,5 +1,5 @@
 const Colors = () => {
-  const primary = '#09536f'
+  const primary = '#0C3675'
   const secondary = '#fa5239'
 
   return {
@@ -57,7 +57,7 @@ const Colors = () => {
     },
     transparent: 'transparent',
     white: '#fff',
-    grey: '#dbddde',
+    grey: '#8d8f90',
     text: '#333',
     muted: '#848484',
 

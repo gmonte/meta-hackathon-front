@@ -2,19 +2,18 @@
 /* eslint-disable max-len */
 import { post } from '@jqcode/s-laravel'
 
-async function createUser({ name, email, uid }) {
+async function sentNote({ uid, noteIdentifier }) {
   return post({
-    endpoint: 'user',
+    endpoint: 'note',
     data: {
+      user_id: uid,
       data: {
-        name,
-        email,
-        identification_token: uid
+        note_identifier: noteIdentifier
       }
     }
   })
 }
 
 export {
-  createUser
+  sentNote
 }
