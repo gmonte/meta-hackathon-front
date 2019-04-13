@@ -8,17 +8,16 @@ import styles from './styles'
 class InitialScreen extends Component {
   render() {
     const {
-      // classes,
-      // history
       auth: {
-        logout
+        signOut,
+        loading
       }
     } = this.props
 
     return (
       <div>
         <h2>Initial authenticated screen</h2>
-        <Button onClick={ logout }>
+        <Button onClick={ signOut } loading={ loading }>
           Logout
         </Button>
       </div>
