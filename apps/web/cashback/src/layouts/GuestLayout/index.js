@@ -6,7 +6,8 @@ import CardMedia from '@material-ui/core/CardMedia'
 import Card from '@material-ui/core/Card'
 import HelpIconButton from '@jqcode/c-buttons/src/components/IconButton/HelpIconButton'
 import CloseIconButton from '@jqcode/c-buttons/src/components/IconButton/CloseIconButton'
-import HavanLogo from '../../assets/HavanLogo.png'
+import logo from '../../assets/logo.png'
+import logoMobile from '../../assets/logoMobile.png'
 import styles from './styles'
 
 class GuestLayout extends PureComponent {
@@ -33,7 +34,7 @@ class GuestLayout extends PureComponent {
             <HelpIconButton />
             {/*<CardMedia*/}
             {/*  className={ classes.logo }*/}
-            {/*  image={ HavanLogo }*/}
+            {/*  image={ logo }*/}
             {/*  title="Havan"*/}
             {/*/>*/}
             <CloseIconButton />

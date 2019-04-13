@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
-import Card from '@material-ui/core/Card'
 import Button from '@jqcode/c-buttons/src/components/Button'
-import Grid from '@material-ui/core/Grid'
 import { getDataList } from '@jqcode/s-firebase'
+import TextInput from '@jqcode/inputs/src/components/TextInput'
 
 import styles from './styles'
 
@@ -85,26 +84,32 @@ class InitialScreen extends Component {
     } = this.props
 
     return (
-      <Grid
-        container
-        wrap="wrap"
+      <div
+        className={ classes.container }
       >
-        <Grid
-          item
-          lg={ 12 }
-          md={ 12 }
-          sm={ 12 }
-          xm={ 12 }
-          className={ classes.container }
+        <Button
+          onClick={ this.signUser }
+          loading={ loading }
+          vertical
+          btnClass={ classes.buttons }
         >
-          <Button onClick={ this.signUser } loading={ loading }>
-            Login
-          </Button>
-          <Button onClick={ this.signFacebookUser } loading={ loading }>
-            Login
-          </Button>
-        </Grid>
-      </Grid>
+          Login
+        </Button>
+        <Button
+          onClick={ this.signFacebookUser }
+          loading={ loading }
+          vertical
+          btnClass={ classes.buttons }
+        >
+          Facebook
+        </Button>
+        <Form
+
+        >
+          <TextInput name="email" className={ classes.inputs } />
+          <TextInput name="senha" className={ classes.inputs } />
+        </Form>
+      </div>
     )
   }
 }
