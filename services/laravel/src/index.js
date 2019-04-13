@@ -8,11 +8,11 @@ import { initSnackbarByType } from '@jqcode/c-snackbars/src/utils'
 function getUrl(
   {
     endpoint,
-    protocol = 'http'
+    protocol = 'https'
   }
 ) {
 
-  const host = 'ec2-18-229-18-115.sa-east-1.compute.amazonaws.com'
+  const host = 'hackathon.emilio.pedrollo.nom.br'
   let url = ''
 
   if (host.split('://').length > 1) {
@@ -66,7 +66,9 @@ async function request(
       headers: getHeaders({
         headers
       }),
-      data,
+      data: {
+        data
+      },
       fetchOptions,
       serializeConfig,
       json

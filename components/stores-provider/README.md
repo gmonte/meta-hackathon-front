@@ -1,16 +1,16 @@
-# @syntesis/c-stores-provider
+# @jqcode/c-stores-provider
 
 > A Package to provide MobX stores from a High Order Component
 
 ## Install
-Add `@syntesis/c-stores-provider` into package.json dependencies from another package.
+Add `@jqcode/c-stores-provider` into package.json dependencies from another package.
 
 ## Usage
 
 ```jsx
 import React, { Component } from 'react'
 import { inject, observer } from 'mobx-react'
-import { withStores } from '@syntesis/c-stores-provider'
+import { withStores } from '@jqcode/c-stores-provider'
 import someStore from './someStore'
 
 @inject('someStore')
