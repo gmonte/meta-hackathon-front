@@ -18,10 +18,14 @@ class Auth {
   isAuthenticated = false
 
   @observable
+  done = false
+
+  @observable
   user = null
 
   initFirebaseAuth() {
     firebaseAuth().onAuthStateChanged((user) => {
+      this.done = true
       if (user) {
         // User is signed in.
         this.isAuthenticated = true
@@ -63,14 +67,30 @@ class Auth {
   }
 
   @action
-  async signInWithGoogle({ email, password }) {
+  async signInWithGoogle() {
     try {
       this.loading = true
-      // const provider = new firebaseAuth.GoogleAuthProvider();
-      await firebaseAuth().signInWithEmailAndPassword(email, password)
+      const provider = new firebaseAuth.GoogleAuthProvider()
+      const response = await firebaseAuth().signInWithPopup(provider)
+      console.warn('google response', response)
       this.loading = false
     } catch (e) {
-      console.error('Error when was logging the user with email and password', e)
+      console.error('Error when was logging the user with google', e)
+      this.loading = false
+      throw e
+    }
+  }
+
+  @action
+  async signInWithFacebook() {
+    try {
+      this.loading = true
+      const provider = new firebaseAuth.FacebookAuthProvider()
+      const response = await firebaseAuth().signInWithPopup(provider)
+      console.warn('facebook response', response)
+      this.loading = false
+    } catch (e) {
+      console.error('Error when was logging the user with facebook', e)
       this.loading = false
       throw e
     }

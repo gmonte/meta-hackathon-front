@@ -94,10 +94,11 @@ export default () => ({
       }
     }
   },
-  initialLoading: {
-    position: 'relative'
-  },
-  pleaseWait: {
-    paddingRight: 30
+  waitingFirebase: {
+    display: 'flex',
+    flex: 1,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 })
