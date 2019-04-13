@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "name": "@jqcode/s-firebase",
+  "version": "0.0.0",
+  "main": "src/index.js",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@jqcode/s-http": "^0.0.0",
+    "firebase": "^5.9.4"
+  }
+}
