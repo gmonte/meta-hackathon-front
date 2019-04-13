@@ -11,22 +11,14 @@ import styles from './styles'
 class InitialScreen extends Component {
   constructor(props) {
     super(props)
-    this.getUsers = this.getUsers.bind(this)
     this.createUser = this.createUser.bind(this)
     this.signUser = this.signUser.bind(this)
-    this.signGoogleUser = this.signGoogleUser.bind(this)
-    this.signFacebookUser = this.signFacebookUser.bind(this)
   }
 
   componentDidMount() {
     // this.getUsers()
     // this.createUser()
     // this.signUser()
-  }
-
-  async getUsers() {
-    const response = await getDataList('users')
-    console.warn('users list', response)
   }
 
   async createUser() {
@@ -37,7 +29,7 @@ class InitialScreen extends Component {
     } = this.props
 
     createUserWithEmailAndPassword({
-      email: 'email@test.com',
+      email: 'email2@test.com',
       password: '123456'
     })
   }
@@ -55,32 +47,14 @@ class InitialScreen extends Component {
     })
   }
 
-  async signGoogleUser() {
-    const {
-      auth: {
-        signInWithGoogle
-      }
-    } = this.props
-
-    signInWithGoogle()
-  }
-
-  async signFacebookUser() {
-    const {
-      auth: {
-        signInWithFacebook
-      }
-    } = this.props
-
-    signInWithFacebook()
-  }
-
   render() {
     const {
       classes,
       // history
       auth: {
-        loading
+        loading,
+        signInWithFacebook,
+        signInWithGoogle
       }
     } = this.props
 
@@ -97,11 +71,14 @@ class InitialScreen extends Component {
           xm={ 12 }
           className={ classes.container }
         >
-          <Button onClick={ this.signUser } loading={ loading }>
-            Login
+          <Button onClick={ this.createUser } loading={ loading }>
+            Login Email
           </Button>
-          <Button onClick={ this.signFacebookUser } loading={ loading }>
-            Login
+          <Button onClick={ signInWithFacebook } loading={ loading }>
+            Login Facebook
+          </Button>
+          <Button onClick={ signInWithGoogle } loading={ loading }>
+            Login Google
           </Button>
         </Grid>
       </Grid>
