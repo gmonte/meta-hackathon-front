@@ -13,7 +13,11 @@ class GuestLayout extends PureComponent {
 
 GuestLayout.propTypes = {
   classes: PropTypes.object.isRequired,
-  children: PropTypes.element.isRequired
+  children: PropTypes.element.isRequired,
+  auth: PropTypes.object
+}
+GuestLayout.defaultProps = {
+  auth: {}
 }
 
 export default withStyles(styles)(GuestLayout)

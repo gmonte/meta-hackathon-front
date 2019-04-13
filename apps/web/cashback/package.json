@@ -1,8 +1,8 @@
 {
   "private": true,
-  "name": "@jqcode/app-web-demo",
+  "name": "@jqcode/app-web-cashback",
   "version": "0.0.0",
-  "description": "Demo theme. Demonstrates the basic concepts of the front-end theming deployed by lerna monorepo",
+  "description": "Cashback theme. Demonstrates the basic concepts of the front-end theming deployed by lerna monorepo",
   "main": "src/index.js",
   "license": "MIT",
   "publishConfig": {
