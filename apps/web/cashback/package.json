@@ -3,13 +3,15 @@
   "name": "@jqcode/app-web-cashback",
   "version": "0.0.0",
   "description": "Cashback theme. Demonstrates the basic concepts of the front-end theming deployed by lerna monorepo",
+  "homepage": "https://gmonte.github.io/meta-hackathon-front",
   "main": "src/index.js",
   "license": "MIT",
   "publishConfig": {
     "access": "public"
   },
   "devDependencies": {
-    "create-file-webpack": "^1.0.2"
+    "create-file-webpack": "^1.0.2",
+    "gh-pages": "^2.0.1"
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
@@ -35,6 +37,7 @@
   "scripts": {
     "bootstrap": "cd ../../../ && yarn bootstrap",
     "start": "webpack-dev-server --config config/webpack.config.js --mode development -w --info false --debug --devtool eval-source-map",
-    "build": "rm -rf build/ && webpack --config config/webpack.config.js --mode production"
+    "build": "rm -rf build/ && webpack --config config/webpack.config.js --mode production",
+    "deploy": "gh-pages -d build"
   }
 }

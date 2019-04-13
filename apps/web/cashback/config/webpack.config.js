@@ -13,7 +13,7 @@ module.exports = (env, argv) => ({
     path: path.resolve(__dirname, `../build`),
     filename: '[name].js',
     chunkFilename: '[name].js',
-    publicPath: '/'
+    publicPath: argv.mode === 'production' ? '/meta-hackathon-front/' : '/'
   },
   resolve: {
     modules: [
