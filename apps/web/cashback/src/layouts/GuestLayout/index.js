@@ -6,16 +6,35 @@ import CardMedia from '@material-ui/core/CardMedia'
 import Card from '@material-ui/core/Card'
 import HelpIconButton from '@jqcode/c-buttons/src/components/IconButton/HelpIconButton'
 import CloseIconButton from '@jqcode/c-buttons/src/components/IconButton/CloseIconButton'
-import logo from '../../assets/logo.png'
-import logoMobile from '../../assets/logoMobile.png'
+import {Logo} from '../../assets/logo.png'
+import LogoMobile from '../../assets/logoMobile.png'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import BottomNavigation from '@material-ui/core/BottomNavigation'
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction'
+import CashIcon from '@jqcode/c-icons/src/CashIcon'
+
+
 import styles from './styles'
 
 class GuestLayout extends PureComponent {
+  state = {
+    value: 0
+  }
+
+  handleChange = (event, value) => {
+    this.setState({ value })
+  }
+
   render() {
     const {
       children,
       classes
     } = this.props
+
+    const {
+      value
+    } = this.state
 
     return (
       <Grid
@@ -30,18 +49,22 @@ class GuestLayout extends PureComponent {
           lg={ 12 }
           className={ classes.container }
         >
-          <Card className={ classes.header }>
-            <HelpIconButton />
-            {/*<CardMedia*/}
-            {/*  className={ classes.logo }*/}
-            {/*  image={ logo }*/}
-            {/*  title="Havan"*/}
-            {/*/>*/}
-            <CloseIconButton />
-          </Card>
+          <AppBar position="static" color="default">
+            <Toolbar>
+
+            </Toolbar>
+          </AppBar>
           <Card className={ classes.content }>
             { children }
           </Card>
+          <BottomNavigation
+            value={value}
+            onChange={this.handleChange}
+            showLabels
+            className={classes.root}
+          >
+            <BottomNavigationAction label="Usar Saldo" icon={<CashIcon />} />
+          </BottomNavigation>
 
         </Grid>
 

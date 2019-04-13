@@ -16,10 +16,6 @@ export default () => ({
     height: '100%'
   },
   logo: {
-    width: '80%',
-    boxShadow: 'none',
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat'
+    width: '100%'
   }
 })
