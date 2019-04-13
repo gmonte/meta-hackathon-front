@@ -3,7 +3,7 @@ import Colors from '@jqcode/c-styles/src/styles/Colors'
 
 export default () => ({
   '@global': {
-    'html, body, #react-root': {
+    'html, body, #root': {
       fontFamily: Fonts.fontFamily,
       width: '100%',
       height: '100%',
