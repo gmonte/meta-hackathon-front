@@ -19,6 +19,7 @@
     "@jqcode/c-styles": "^0.0.0",
     "@jqcode/functions": "^0.0.0",
     "@jqcode/s-firebase": "^0.0.0",
+    "@jqcode/c-loaders": "^0.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.5",
     "react-delay-render": "^0.1.2",
