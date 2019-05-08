@@ -30,7 +30,9 @@ class HistoryItem extends Component {
         </Paper>
         <Paper className={ classes.cashbackContainer }>
           <Typography className={ classes.cashbackText } variant="body1">
-            Cashback: { formatMoney(cashback) }
+            Cashback:
+            {' '}
+            { formatMoney(cashback) }
           </Typography>
         </Paper>
       </Card>

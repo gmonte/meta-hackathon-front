@@ -41,6 +41,7 @@
     "bootstrap": "cd ../../../ && yarn bootstrap",
     "start": "webpack-dev-server --config config/webpack.config.js --mode development -w --info false --debug --devtool eval-source-map",
     "build": "rm -rf build/ && webpack --config config/webpack.config.js --mode production",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "publish:github": "yarn build && yarn deploy"
   }
 }

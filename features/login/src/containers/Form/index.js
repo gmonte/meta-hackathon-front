@@ -6,6 +6,7 @@ import { inject, observer, PropTypes as MobxPropTypes } from 'mobx-react'
 import Typography from '@material-ui/core/Typography'
 import Form from '@jqcode/c-inputs/src/components/Form'
 import TextInput from '@jqcode/c-inputs/src/components/TextInput'
+import PasswordInput from '@jqcode/c-inputs/src/components/PasswordInput'
 import { withStores } from '@jqcode/c-stores-provider'
 import Button from '@jqcode/c-buttons/src/components/Button'
 import AccountIcon from 'mdi-material-ui/Account'
@@ -141,7 +142,7 @@ class FormContainer extends Component {
             onChange={ this.onFormChange }
             disabled={ disabled }
           />
-          <TextInput
+          <PasswordInput
             name="password"
             label="Senha"
             helperText="Informe a sua senha"
